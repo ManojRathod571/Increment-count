@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Move On</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+
+    <style>
+        body {
+            background-color: rgb(34, 53, 104);
+        }
+
+        .container {
+            width: auto;
+
+        }
+
+        .mug {
+            margin-top: 20%;
+            margin-left: 30%;
+        }
+
+        .title {
+            font-family: monospace;
+            color: rgb(112, 187, 42);
+            font-size: 50px;
+        }
+
+
+        div {
+            display: inline-block;
+        }
+
+        .projects {
+            font-family: monospace;
+            font-size: 20px;
+            color: cornsilk;
+        }
+
+        .threeSpread {
+
+            margin: 0 20px 20px 20px;
+            padding-top: 100px;
+            padding-left: 200px;
+        }
+
+        div.inner,
+        div.outer {
+            max-width: 30%;
+            padding: 40px;
+            margin-left: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div align="center" class="container">
+        <div class="threeSpread">
+            <div class="outer">
+                <i class="fas fa-mug-hot fa-4x" style="color:rgb(255, 255, 255)"></i>
+                <h1 class="title" id="counter" data-target="40000"></h1>
+                <p class="projects">Completed Projects</p>
+            </div>
+            <div class="inner">
+                <i class="fas fa-users fa-4x" style="color:rgb(255, 255, 255)"></i>
+                <h1 class="title" id="counter" data-target="15000"></h1>
+                <p class="projects">Our clients</p>
+            </div>
+            <div class="outer">
+                <i class="fas fa-tasks fa-4x" style="color:rgb(255, 255, 255)"></i>
+                <h1 class="title" id="counter" data-target="1000"></h1>
+                <p class="projects">Current Projects</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+
+        let counters = document.querySelectorAll("#counter");
+
+        // we have passed one argument here...that has took the current elements 
+        counters.forEach((elements) => {
+            console.log(elements);
+            elements.innerHTML = 0
+
+            const updatecounter = () => {
+
+                const targetvalue = +elements.getAttribute("data-target");
+                const initialValue = Number(elements.innerHTML);
+
+                const increment = targetvalue / 100;
+
+                if (initialValue < targetvalue) {
+                    elements.innerHTML = `${Math.round(initialValue+increment)}`;
+                    setTimeout(updatecounter,9)
+                }else{
+                    elements.innerHTML = targetvalue;
+                }
+
+            }
+
+            updatecounter();
+        })
+
+
+        // there are multiple ways to convert string into number
+        // const name = +str;
+        // const name =Number(str);
+        // const name = parseInt(str);
+</script>
+</body>
+
+</html>
